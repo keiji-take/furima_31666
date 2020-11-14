@@ -7,7 +7,6 @@
 | name                            | string | null: false |
 | email                           | string | null: false |
 | encrypted_password              | string | null: false |
-| encrypted_password_confirmation | string | null: false |
 | last_name                       | string | null: false |
 | first_name                      | string | null: false |
 | last_name_kana                  | string | null: false |
@@ -25,18 +24,17 @@
 | --------------------- | ------  | ----------- |
 | product               | string  | null: false |
 | exception             | text    | null: false |
-| category              | integer | null: false |
-| condition             | integer | null: false |
-| payer                 | integer | null: false |
-| location              | integer | null: false |
+| category_id           | integer | null: false |
+| condition_id          | integer | null: false |
+| payer_id              | integer | null: false |
+| location_id           | integer | null: false |
 | send_days             | date    | null: false |
-| price                 | integer | null: false |
+| price                 | string  | null: false |
 
 ### Association
 - has_many :comments
 - belongs_to :user
-- has_many :orders
-
+- has_one :order
 
 ## commentsテーブル
 |    column             |  type  |   options   |
@@ -51,14 +49,14 @@
 |    column             |  type   |   options   |
 | --------------------- | ------- | ----------- |
 | card_num              | string  | null: false |
-| expiration            | string  | null: false |
+| expiration            |         | null: false |
 | key_code              | string  | null: false |
 | post                  | string  | null: false |
 | prefecture            | integer | null: false |
 | city                  | string  | null: false |
 | address               | string  | null: false |
 | property              | date    | null: false |
-| tel                   | number  | null: false |
+| tel                   | string  | null: false |
 
 ### Association
 - belongs_to :item
