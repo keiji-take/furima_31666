@@ -28,8 +28,8 @@
 | condition_id          | integer | null: false |
 | payer_id              | integer | null: false |
 | location_id           | integer | null: false |
-| send_days             | date    | null: false |
-| price                 | string  | null: false |
+| send_days_id          | date    | null: false |
+| price                 | integer | null: false |
 
 ### Association
 - has_many :comments
@@ -48,9 +48,6 @@
 ## orderテーブル
 |    column             |  type   |   options   |
 | --------------------- | ------- | ----------- |
-| card_num              | string  | null: false |
-| expiration            |         | null: false |
-| key_code              | string  | null: false |
 | post                  | string  | null: false |
 | prefecture            | integer | null: false |
 | city                  | string  | null: false |
@@ -59,7 +56,7 @@
 | tel                   | string  | null: false |
 
 ### Association
-- belongs_to :item
+- has_one :item
 - belongs_to :user
 
 
