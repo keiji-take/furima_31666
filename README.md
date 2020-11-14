@@ -30,11 +30,12 @@
 | location_id           | integer | null: false |
 | send_days_id          | integer | null: false |
 | price                 | integer | null: false |
+| references            | user    |             |
 
 ### Association
 - has_many :comments
 - belongs_to :user
-- has_one :order
+- has_one :trade
 
 ## commentsテーブル
 |    column             |  type  |   options   |
@@ -45,7 +46,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## orderテーブル
+## ordersテーブル
 |    column             |  type   |   options   |
 | --------------------- | ------- | ----------- |
 | post                  | string  | null: false |
@@ -54,19 +55,17 @@
 | address               | string  | null: false |
 | property              | string  |             |
 | tel                   | string  | null: false |
-| trade                 |reference|             |
+| references            | user    |             |
 
 
 ### Association
-- has_one :item
-- belongs_to :user
 - belongs_to :trade
 
-## tradeテーブル
+## tradesテーブル
 |    column             |  type   |   options   |
 | --------------------- | ------- | ----------- |
-| user                  |reference|             |
-| item                  |reference|             |
+| references            | user    |             |
+| references            | item    |             |
 
 ### Association
 - belongs_to :user
