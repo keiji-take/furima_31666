@@ -49,14 +49,27 @@
 |    column             |  type   |   options   |
 | --------------------- | ------- | ----------- |
 | post                  | string  | null: false |
-| prefecture            | integer | null: false |
+| prefecture_id         | integer | null: false |
 | city                  | string  | null: false |
 | address               | string  | null: false |
-| property              | date    | null: false |
+| property              | string  | null: false |
 | tel                   | string  | null: false |
+
 
 ### Association
 - has_one :item
 - belongs_to :user
+- belongs_to :trade
+
+## tradeテーブル
+|    column             |  type   |   options   |
+| --------------------- | ------- | ----------- |
+| chat                  | text    | null: false |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+- belongs_to :order
+
 
 
