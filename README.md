@@ -65,7 +65,6 @@
 ## tradeテーブル
 |    column             |  type   |   options   |
 | --------------------- | ------- | ----------- |
-| chat                  | text    | null: false |
 | user                  |reference|             |
 | item                  |reference|             |
 
