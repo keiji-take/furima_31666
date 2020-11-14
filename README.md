@@ -16,7 +16,7 @@
 ### Association
 - has_many :items
 - has_many :comments
-- belongs_to :order
+- has_many :orders
 
 
 ## itemsテーブル
@@ -28,7 +28,7 @@
 | condition_id          | integer | null: false |
 | payer_id              | integer | null: false |
 | location_id           | integer | null: false |
-| send_days_id          | date    | null: false |
+| send_days_id          | integer | null: false |
 | price                 | integer | null: false |
 
 ### Association
@@ -52,8 +52,9 @@
 | prefecture_id         | integer | null: false |
 | city                  | string  | null: false |
 | address               | string  | null: false |
-| property              | string  | null: false |
+| property              | string  |             |
 | tel                   | string  | null: false |
+| trade                 |reference|             |
 
 
 ### Association
@@ -65,11 +66,13 @@
 |    column             |  type   |   options   |
 | --------------------- | ------- | ----------- |
 | chat                  | text    | null: false |
+| user                  |reference|             |
+| item                  |reference|             |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :order
+- has_one :order
 
 
 
