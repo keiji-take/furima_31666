@@ -37,6 +37,7 @@
 - belongs_to :user
 - has_one :trade
 
+
 ## commentsテーブル
 |    column             |  type  |   options   |
 | --------------------- | ------ | ----------- |
@@ -48,6 +49,7 @@
 - belongs_to :user
 - belongs_to :item
 
+
 ## ordersテーブル
 |    column             |  type   |   options   |
 | --------------------- | ------- | ----------- |
@@ -57,11 +59,11 @@
 | address               | string  | null: false |
 | property              | string  |             |
 | tel                   | string  | null: false |
-| user                  |references|null: false, foreign_key: true|
-
+| trade                  |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :trade
+
 
 ## tradesテーブル
 |    column             |  type    |   options       |
