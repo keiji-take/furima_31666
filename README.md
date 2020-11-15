@@ -28,9 +28,9 @@
 | condition_id          | integer | null: false |
 | payer_id              | integer | null: false |
 | location_id           | integer | null: false |
-| send_days_id          | integer | null: false |
+| send_day_id           | integer | null: false |
 | price                 | integer | null: false |
-| references            | user    |             |
+| user                  |references|null: false, foreign_key: true|
 
 ### Association
 - has_many :comments
@@ -41,6 +41,8 @@
 |    column             |  type  |   options   |
 | --------------------- | ------ | ----------- |
 | text                  | text   | null: false |
+| user | references | null: false, foreign_key: true |
+| item | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -55,17 +57,17 @@
 | address               | string  | null: false |
 | property              | string  |             |
 | tel                   | string  | null: false |
-| references            | user    |             |
+| user                  |references|null: false, foreign_key: true|
 
 
 ### Association
 - belongs_to :trade
 
 ## tradesテーブル
-|    column             |  type   |   options   |
-| --------------------- | ------- | ----------- |
-| references            | user    |             |
-| references            | item    |             |
+|    column             |  type    |   options       |
+| --------------------- | -------  | --------------- |
+| user                  |references|null: false, foreign_key: true|
+| item                  |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
