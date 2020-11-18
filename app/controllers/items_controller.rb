@@ -1,15 +1,11 @@
 class ItemsController < ApplicationController
   # before_action :unsigned_user, only: [:new, :create ]
   # before_action :current_user, only: [:edit, :update]
-
+  before_action :authenticate_user!
   def index
   end
   def new
-    if user_signed_in?
-      @item = Item.new
-    else
-      redirect_to root_path
-    end
+    @item = Item.new
   end
   def create
     @item = Item.new(item_params)
