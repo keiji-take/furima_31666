@@ -13,11 +13,16 @@ class Item < ApplicationRecord
   belongs_to :location
   belongs_to :send_day
   
-  validates :image, presence: true
-  validates :category_id, numericality: { other_than: 1}
-  validates :condition_id, numericality: { other_than: 1}
-  validates :payer_id, numericality: { other_than: 1}
-  #validates :location_id, numericality: { other_than: 1}
-  validates :send_day_id, numericality: { other_than: 1}
+  with_options presence: true do
+    validates :product, length: { maximum: 40 }
+    validates :exception, length: { maximum: 1000 }
+    validates :image
+    validates :category_id
+    validates :condition_id
+    validates :payer_id
+    validates :location_id
+    validates :send_day_id
+    validates :price
+  end
   
 end
