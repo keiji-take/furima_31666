@@ -22,7 +22,7 @@ class Item < ApplicationRecord
     validates :payer_id
     validates :location_id
     validates :send_day_id
-    validates :price
+    validates :price, numericality: {greater_than: 299, less_than: 10000000}
   end
-  
+
 end
