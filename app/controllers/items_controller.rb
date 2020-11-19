@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   # before_action :unsigned_user, only: [:new, :create ]
   # before_action :current_user, only: [:edit, :update]
-  before_action :authenticate_user!
+    before_action :authenticate_user! , only:[:new, :create, :edit, :delete] 
   def index
     @items = Item.includes(:user).order('created_at DESC')
   end
@@ -17,6 +17,10 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   def edit
