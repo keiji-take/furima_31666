@@ -12,6 +12,7 @@ class Item < ApplicationRecord
   belongs_to :payer
   belongs_to :location
   belongs_to :send_day
+  belongs_to :order
 
   with_options presence: true do
     validates :product, length: { maximum: 40 }
