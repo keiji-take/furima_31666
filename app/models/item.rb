@@ -12,7 +12,6 @@ class Item < ApplicationRecord
   belongs_to :payer
   belongs_to :location
   belongs_to :send_day
-  belongs_to :order
 
   with_options presence: true do
     validates :product, length: { maximum: 40 }
@@ -25,4 +24,5 @@ class Item < ApplicationRecord
     validates :send_day_id
     validates :price, numericality: { greater_than: 299, less_than: 10_000_000 }
   end
+  attr_accessor :token
 end
