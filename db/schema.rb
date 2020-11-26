@@ -62,12 +62,12 @@ ActiveRecord::Schema.define(version: 2020_11_24_125629) do
   end
 
   create_table "trades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "items_id", null: false
-    t.bigint "users_id", null: false
+    t.bigint "item_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["items_id"], name: "index_trades_on_items_id"
-    t.index ["users_id"], name: "index_trades_on_users_id"
+    t.index ["item_id"], name: "index_trades_on_item_id"
+    t.index ["user_id"], name: "index_trades_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -91,6 +91,6 @@ ActiveRecord::Schema.define(version: 2020_11_24_125629) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "users"
   add_foreign_key "orders", "trades"
-  add_foreign_key "trades", "items", column: "items_id"
-  add_foreign_key "trades", "users", column: "users_id"
+  add_foreign_key "trades", "items"
+  add_foreign_key "trades", "users"
 end
