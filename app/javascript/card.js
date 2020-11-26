@@ -10,12 +10,13 @@ const pay = () => {
 
     const card = {
       //変数cardに定義するオブジェクトの定義
-      number: formData.get("number"),
-      cvc: formData.get("cvc"),
-      exp_month: formData.get("exp_month"),
-      exp_year: `20${formData.get("exp_year")}`,
+      number: formData.get("order_trade[number]"),
+      cvc: formData.get("order_trade[cvc]"),
+      exp_month: formData.get("order_trade[exp_month]"),
+      exp_year: `20${formData.get("order_trade[exp_year]")}`,
     };
     Payjp.createToken(card, (status, response) => {
+      console.log(response)
       if (status == 200) {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
