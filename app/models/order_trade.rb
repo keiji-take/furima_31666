@@ -11,7 +11,7 @@ class OrderTrade
   end
   def save
     Order.create(post_code: post_code, prefecture: prefecture, city: city, house_num: house_num, building_name: building_name, tel: tel)
-    Trade.create(item_id: item.id, user_id: user.id)
+    Trade.create(item_id: item_id, user_id: user_id)
   end
   
 end
