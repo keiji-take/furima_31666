@@ -1,13 +1,36 @@
 class OrdersController < ApplicationController
+
   def index
     @item = Item.find(params[:item_id])
-    @order = Order.new
+    @order_trade = OrderTrade.new
   end
   def create
-    @order = Order.new(order_params)
+    @item = Item.find(params[:item_id])
+    @order_trade = OrderTrade.new(order_params)
+    binding.pry
+    if @order_trade.valid?
+      pay_item
+      @order_trade.save
+      redirect_to root_path
+    else 
+      render 'index'
+    end
+    
   end
+
   private
+
   def order_params
-    params.require(:token).permit(:token).merge( item: params[:price])
+    params.require(:order_trade).permit(:post_code, :prefecture, :city, :house_num, :building_name, :tel).merge(token: params[:token], item_id: @item.id, user_id: current_user.id)
   end
+  def pay_item
+    @item = Item.find(params[:item_id])
+    Payjp.api_key = "sk_test_efcc5b589699c1f2212a5088"
+      Payjp::Charge.create(
+        amount: @item.price,
+        card: order_params[:token],
+        currency: 'jpy'
+      )
+  end
+
 end
