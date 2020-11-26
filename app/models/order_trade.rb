@@ -10,8 +10,8 @@ class OrderTrade
     validates :token
   end
   def save
-    Order.create(post_code: post_code, prefecture: prefecture, city: city, house_num: house_num, building_name: building_name, tel: tel)
-    Trade.create(item_id: item_id, user_id: user_id)
+    trade = Trade.create(item_id: item_id, user_id: user_id)
+    Order.create(post_code: post_code, prefecture: prefecture, city: city, house_num: house_num, building_name: building_name, tel: tel, trade_id: trade.id)
   end
   
 end
