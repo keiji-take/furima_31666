@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one :order
+  
 
   def was_attached?
     image.attached?
@@ -24,5 +26,4 @@ class Item < ApplicationRecord
     validates :send_day_id
     validates :price, numericality: { greater_than: 299, less_than: 10_000_000 }
   end
-  attr_accessor :token
 end
