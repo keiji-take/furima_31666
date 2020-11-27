@@ -9,6 +9,10 @@ RSpec.describe OrderTrade, type: :model do
       it '郵便番号,住所,電話番号,クレジットカード情報が正しく入力されているとき' do
         expect(@order_trade).to be_valid
       end
+      it '建物名がなくても購入できるとき' do
+        @order_trade.building_name = ''
+        expect(@order_trade).to be_valid
+      end
     end
     context '商品購入ができないとき' do
       it '郵便番号,住所,電話番号,クレジットカード情報が空とき' do
@@ -21,15 +25,20 @@ RSpec.describe OrderTrade, type: :model do
         @order_trade.valid?
         expect(@order_trade.errors.full_messages).to include("Post code can't be blank", 'Post code is invalid. Include hyphen(-)', "Prefecture can't be blank", "City can't be blank", "House num can't be blank", "Tel can't be blank", 'Tel is invalid', "Token can't be blank")
       end
-      it '郵便番号が正しく入力されていないとき' do
+      it '郵便番号にハイフン(-)がないとき' do
         @order_trade.post_code = '1234567'
         @order_trade.valid?
         expect(@order_trade.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
-      it '電話番号が正しく入力されていないとき' do
+      it '電話番号にハイフン(-)があるとき' do
         @order_trade.tel = '090-1234-5678'
         @order_trade.valid?
         expect(@order_trade.errors.full_messages).to include('Tel is invalid')
+      end
+      it '電話番号が12桁以上の数字のとき' do
+        @order_trade.tel = '11111111111111111111'
+        @order_trade.valid?
+        expect(@order_trade.errors.full_messages).to include("Tel is too long")
       end
     end
   end
