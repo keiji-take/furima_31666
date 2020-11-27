@@ -5,12 +5,10 @@ class OrdersController < ApplicationController
     @order_trade = OrderTrade.new
   end
   def create
-    binding.pry
     @item = Item.find(params[:item_id])
     @order_trade = OrderTrade.new(order_params)
     if @order_trade.valid?
       pay_item
-      binding.pry
       @order_trade.save
       redirect_to root_path
     else 

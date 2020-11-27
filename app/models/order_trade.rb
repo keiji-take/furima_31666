@@ -6,7 +6,7 @@ class OrderTrade
     validates :prefecture, numericality: true
     validates :city
     validates :house_num
-    validates :tel, format: {with: /\A[0-9]+\z/, messages: "can't be blank"}
+    validates :tel, format: {with: /\A[0-9]+\z/, messages: "input only number"}
     validates :token
   end
   def save
