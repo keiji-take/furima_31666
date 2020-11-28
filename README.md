@@ -59,7 +59,7 @@
 | address               | string  | null: false |
 | property              | string  |             |
 | tel                   | string  | null: false |
-| trade                  |references|null: false, foreign_key: true|
+| trade                 |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :trade
